@@ -118,7 +118,31 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 .sec p.lead{max-width:38em;color:#B9B6E6;font-size:clamp(16px,1.3vw,19px);line-height:1.6;margin-bottom:24px;font-variation-settings:"wdth" 95}
 
 /* work grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+/* work KPI row */
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi{flex:1;min-width:150px;background:#211E55;border:1px solid rgba(216,214,245,.09);border-radius:16px;padding:22px 20px;text-align:center}
+.kpi-value{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:32px;font-weight:700;color:#FFB547;display:block;margin-bottom:4px}
+.kpi-label{font-size:13.5px;color:#B9B6E6;display:block;font-weight:500}
+.kpi:hover{border-color:rgba(255,181,71,.5);transform:translateY(-2px)}
+.kpi:focus-visible{outline:3px solid var(--cocoa);outline-offset:2px}
+
+/* timeline */
+.timeline{position:relative;padding-left:32px;padding-bottom:20px;max-width:720px}
+.timeline-item{position:relative;display:flex;gap:24px;padding-bottom:20px}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,181,71,.25);flex:none;z-index:1;margin-top:6px;position:relative}
+.timeline-line{position:absolute;left:8px;top:24px;bottom:-20px;width:2px;background:var(--ink-soft);opacity:.4}
+.timeline-card{background:#211E55;border:1px solid rgba(216,214,245,.09);border-radius:14px;padding:20px;flex:1;position:relative}
+.timeline-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.timeline-year{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--amber)}
+.timeline-role{font-size:12px;color:#B9B6E6;text-transform:uppercase;letter-spacing:.05em}
+.timeline-card h3{font-size:16px;font-weight:700;color:#F2F1FF;margin-bottom:6px;font-variation-settings:"wdth" 92}
+.timeline-desc{font-size:14px;color:#B9B6E6;line-height:1.55;margin-bottom:10px}
+.timeline-card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0}
+.timeline-item:nth-child(odd) .timeline-dot{background:var(--pink)}
+.timeline-item:nth-child(odd) .timeline-dot{box-shadow:0 0 0 4px rgba(255,122,182,.25)}
+@media (prefers-reduced-motion:reduce){.timeline-dot,.timeline-line{display:none}
+.timeline-card{padding-left:16px}}
+.timeline-item{padding-left:8px}
 .card{background:#211E55;border:1px solid rgba(216,214,245,.09);border-radius:18px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.1,1),border-color .3s}
 .card:hover{transform:translateY(-4px);border-color:rgba(255,181,71,.5)}
 .thumb{height:140px;display:flex;align-items:flex-end;padding:16px;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:40px;font-weight:600;color:rgba(255,255,255,.92);text-shadow:0 2px 12px rgba(0,0,0,.25)}
@@ -172,7 +196,7 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
   <nav id="nav">
     <a class="logo" href="#hero" data-code='import { Work, Stack, About } from "./rob";'>rob.dev</a>
     <div class="links" id="links">
-      <a href="#work">Work</a><a href="#stack">Stack</a><a href="#about">About</a>
+      <a href="#work">Work</a><a href="#worklist">Selected</a><a href="#stack">Stack</a><a href="#about">About</a>
       <a class="hello" href="#contact" data-code="<Contact />">Say hello</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -205,6 +229,14 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 
 <section class="sec" id="work">
   <div class="sec-head"><span class="mono">// work</span><h2>Things I've shipped</h2></div>
+
+  <div class="kpi-row">
+    <div class="kpi"><span class="kpi-value">4+</span><span class="kpi-label">Full-stack apps delivered</span></div>
+    <div class="kpi"><span class="kpi-value">5+</span><span class="kpi-label">Years experience</span></div>
+    <div class="kpi"><span class="kpi-value">10+</span><span class="kpi-label">Projects shipped</span></div>
+    <div class="kpi"><span class="kpi-value">99%</span><span class="kpi-label">On-time delivery</span></div>
+  </div>
+
   <div class="grid">
     <article class="card">
       <div class="thumb t1">01</div>
@@ -263,10 +295,113 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
   </div>
 </section>
 
+<section class="sec" id="worklist">
+  <div class="sec-head"><span class="mono">// worklist</span><h2>Selected work</h2></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-year mono">2025–2026</span>
+          <span class="timeline-role">Full-stack developer</span>
+        </div>
+        <h3>Pulse Health</h3>
+        <p class="timeline-desc">Real-time patient monitoring system with live vitals, medication timelines and clinician notes — built for NHS-adjacent health startup.</p>
+        <div class="tags"><span>Next.js</span><span>Supabase</span><span>WebSockets</span><span>TypeScript</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-year mono">2024–2025</span>
+          <span class="timeline-role">Full-stack developer</span>
+        </div>
+        <h3>Cartly DTC</h3>
+        <p class="timeline-desc">High-conversion e-commerce storefront and checkout for a direct-to-consumer brand. Sub-second page loads, one-page cart, Stripe-powered.</p>
+        <div class="tags"><span>TypeScript</span><span>Next.js</span><span>Stripe</span><span>Redis</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-year mono">2023–2024</span>
+          <span class="timeline-role">Founder, Full-stack</span>
+        </div>
+        <h3>Ledgerly Finance</h3>
+        <p class="timeline-desc">Personal finance PWA — bank feed aggregation, budgeting and bill alerts. Turned messy multi-bank feeds into one calm weekly plan.</p>
+        <div class="tags"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Plaid</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-year mono">2022–2023</span>
+          <span class="timeline-role">Full-stack developer</span>
+        </div>
+        <h3>Scribe AI</h3>
+        <p class="timeline-desc">AI meeting assistant — transcribes, summarizes and files notes straight into team wiki. Deployed on Vercel Edge Functions.</p>
+        <div class="tags"><span>Python</span><span>OpenAI</span><span>Vercel Edge</span><span>FastAPI</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-year mono">2021–2022</span>
+          <span class="timeline-role">Frontend developer</span>
+        </div>
+        <h3>Moniker Brand</h3>
+        <p class="timeline-desc">Brand identity and digital presence for a design studio — portfolio site with three.js animations, interactive gallery.</p>
+        <div class="tags"><span>TypeScript</span><span>React</span><span>Three.js</span><span>Framer Motion</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-year mono">2019–2021</span>
+          <span class="timeline-role">Full-stack developer</span>
+        </div>
+        <h3>DocuFlow</h3>
+        <p class="timeline-desc">Document processing pipeline for legal tech — OCR, classification, and automated clause extraction. Reduced review time by 70%.</p>
+        <div class="tags"><span>Python</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="stack">
+  <div class="sec-head"><span class="mono">// stack</span><h2>Tools I reach for</h2></div>
+  <div class="stack-grid">
+    <div class="tool"><i class="a"></i>TypeScript</div>
+    <div class="tool"><i class="b"></i>React</div>
+    <div class="tool"><i class="c"></i>Next.js</div>
+    <div class="tool"><i class="a"></i>Node.js</div>
+    <div class="tool"><i class="b"></i>Python</div>
+    <div class="tool"><i class="c"></i>FastAPI</div>
+    <div class="tool"><i class="a"></i>PostgreSQL</div>
+    <div class="tool"><i class="b"></i>Supabase</div>
+    <div class="tool"><i class="c"></i>React Native</div>
+    <div class="tool"><i class="a"></i>Tailwind CSS</div>
+    <div class="tool"><i class="b"></i>Docker</div>
+    <div class="tool"><i class="c"></i>Playwright</div>
+  </div>
+</section>
+
 <section class="sec" id="about">
   <div class="sec-head"><span class="mono">// about</span><h2>Hello, I'm Rob</h2></div>
   <div class="about-grid">
-    <p class="lead">I'm a full-stack developer and founder. I build web and mobile apps — from raw ideas to production systems — across fintech, health, and e-commerce — prototypes, production systems and the unglamorous fixes in between — across fintech, health and e-commerce.</p>
+    <p class="lead">I'm a full-stack developer and founder. I build web and mobile apps — from raw ideas to production systems — across fintech, health, and e-commerce — prototypes, production systems and the unglamorous fixes in between — across fintech, health, and e-commerce.</p>
     <ul class="facts">
       <li><span class="mono">based</span><span>London, UK</span></li>
       <li><span class="mono">focus</span><span>web · mobile · AI</span></li>
@@ -584,7 +719,7 @@ menuBtn.addEventListener('click',()=>{
 });
 
 /* dark nav once scrolled + active-link highlight */
-const SECTIONS=['work','stack','about','contact'];
+const SECTIONS=['work','worklist','stack','about','contact'];
 function onScroll(){
   nav.classList.toggle('scrolled',scrollY>40);
   let cur='';
