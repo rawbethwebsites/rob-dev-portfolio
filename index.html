@@ -190,6 +190,49 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 }
 @media (max-height:640px) and (max-width:820px){.portrait{max-height:34svh}.bio{display:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ---------- personal motion layer ---------- */
+.sec{overflow:hidden}
+.sec::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.32;background:linear-gradient(115deg,transparent 0 42%,rgba(255,181,71,.08) 42.2% 42.5%,transparent 42.7% 100%);transform:translateX(-24%);transition:transform 1.2s cubic-bezier(.2,.8,.1,1)}
+.sec.in-view::before{transform:translateX(12%)}
+.sec-head,.kpi-row,.grid,.timeline,.stack-grid,.about-grid,.contact-row,.foot,.motion-rail{position:relative;z-index:1}
+.sec-head{max-width:760px}
+.sec-head h2{font-variation-settings:"wdth" 102}
+.kpi{transition:transform .45s cubic-bezier(.2,.8,.1,1),border-color .3s,background .3s}
+.kpi:nth-child(2n){transform:translateY(18px)}
+.in-view .kpi:nth-child(2n){transform:translateY(0)}
+.grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.card{grid-column:span 6;position:relative;transform:translateY(24px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.1,1),opacity .7s,border-color .3s}
+.in-view .card{transform:none;opacity:1}
+.in-view .card:nth-child(2){transition-delay:.08s}.in-view .card:nth-child(3){transition-delay:.16s}.in-view .card:nth-child(4){transition-delay:.24s}
+.card:nth-child(2) .thumb{height:180px}.card:nth-child(3) .thumb{height:115px}.card:nth-child(4) .thumb{height:155px}
+.thumb{position:relative;overflow:hidden;isolation:isolate}
+.thumb::after{content:"";position:absolute;inset:-30% -15%;background:repeating-linear-gradient(115deg,transparent 0 18px,rgba(255,255,255,.13) 19px 21px,transparent 22px 44px);transform:translateX(-22%);transition:transform .8s cubic-bezier(.2,.8,.1,1);z-index:-1}
+.card:hover .thumb::after{transform:translateX(18%)}
+.motion-rail{margin:0 calc(clamp(20px,5vw,64px) * -1) clamp(48px,8vh,96px);overflow:hidden;border-top:1px solid rgba(216,214,245,.12);border-bottom:1px solid rgba(216,214,245,.12);background:rgba(33,30,85,.52)}
+.rail-track{display:flex;width:max-content;animation:rail 26s linear infinite;will-change:transform}
+.rail-track span{display:inline-flex;align-items:center;gap:18px;padding:18px 22px;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#B9B6E6;white-space:nowrap}
+.rail-track span::after{content:"✦";color:var(--amber);font-size:14px}
+@keyframes rail{to{transform:translateX(-50%)}}
+.timeline-card{transform:translateX(28px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.1,1),opacity .7s,border-color .3s}
+.in-view .timeline-card{transform:none;opacity:1}
+.timeline-item:nth-child(2) .timeline-card{transition-delay:.08s}.timeline-item:nth-child(3) .timeline-card{transition-delay:.16s}.timeline-item:nth-child(4) .timeline-card{transition-delay:.24s}.timeline-item:nth-child(5) .timeline-card{transition-delay:.32s}.timeline-item:nth-child(6) .timeline-card{transition-delay:.4s}
+#about{background:#E6EBF5;color:var(--ink);background-image:linear-gradient(90deg,rgba(27,24,64,.04) 1px,transparent 1px),linear-gradient(rgba(27,24,64,.04) 1px,transparent 1px);background-size:32px 32px}
+#about .sec-head h2,#about .lead{color:var(--ink)}
+#about .sec .mono,#about .mono{color:var(--cocoa)}
+#about .lead{font-size:clamp(20px,2.4vw,34px);line-height:1.25;max-width:20em}
+#about .facts li{color:var(--ink-soft);border-color:rgba(27,24,64,.16)}
+#contact{background:var(--amber);color:var(--src);background-image:radial-gradient(rgba(21,19,61,.15) 1px,transparent 1px);background-size:18px 18px}
+#contact .sec-head h2,#contact .lead{color:var(--src)}
+#contact .sec .mono{color:var(--src)}
+#contact .lead{max-width:28em;font-size:clamp(18px,2vw,28px);line-height:1.35}
+#contact .btn.primary{background:var(--src);color:var(--amber)}
+#contact .btn.primary:hover{background:#2f2b70}
+#contact .btn.ghost-dark{color:var(--src);border-color:rgba(21,19,61,.45)}
+#contact .btn.ghost-dark:hover{border-color:var(--src);color:var(--src);background:rgba(255,255,255,.18)}
+#contact .foot{border-color:rgba(21,19,61,.24);color:rgba(21,19,61,.65)}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.card{grid-column:auto}.kpi:nth-child(2n){transform:none}.rail-track{animation-duration:22s}}
+@media (prefers-reduced-motion:reduce){.rail-track{animation:none}.sec::before{display:none}.card,.timeline-card{transform:none!important;opacity:1!important}}
 </style>
 </head>
 <body>
@@ -230,6 +273,12 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 
 <section class="sec" id="work">
   <div class="sec-head"><span class="mono">// work</span><h2>Things I've shipped</h2></div>
+
+  <div class="motion-rail" aria-label="Robert's working principles">
+    <div class="rail-track">
+      <span>ship the useful thing</span><span>make it feel obvious</span><span>leave the code kinder</span><span>ship the useful thing</span><span>make it feel obvious</span><span>leave the code kinder</span>
+    </div>
+  </div>
 
   <div class="kpi-row">
     <div class="kpi"><span class="kpi-value">4+</span><span class="kpi-label">Full-stack apps delivered</span></div>
@@ -378,24 +427,6 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
         <div class="tags"><span>Python</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec" id="stack">
-  <div class="sec-head"><span class="mono">// stack</span><h2>Tools I reach for</h2></div>
-  <div class="stack-grid">
-    <div class="tool"><i class="a"></i>TypeScript</div>
-    <div class="tool"><i class="b"></i>React</div>
-    <div class="tool"><i class="c"></i>Next.js</div>
-    <div class="tool"><i class="a"></i>Node.js</div>
-    <div class="tool"><i class="b"></i>Python</div>
-    <div class="tool"><i class="c"></i>FastAPI</div>
-    <div class="tool"><i class="a"></i>PostgreSQL</div>
-    <div class="tool"><i class="b"></i>Supabase</div>
-    <div class="tool"><i class="c"></i>React Native</div>
-    <div class="tool"><i class="a"></i>Tailwind CSS</div>
-    <div class="tool"><i class="b"></i>Docker</div>
-    <div class="tool"><i class="c"></i>Playwright</div>
   </div>
 </section>
 
@@ -733,6 +764,12 @@ onScroll();
 
 /* pause the hero canvas loop while it's offscreen */
 new IntersectionObserver(es=>{window.__heroHidden=!es[0].isIntersecting;},{threshold:.02}).observe(document.getElementById('hero'));
+
+/* bring the lower half in as a sequence, so scrolling feels authored */
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target);}});
+},{threshold:.16});
+document.querySelectorAll('.sec').forEach(section=>revealObserver.observe(section));
 })();
 </script>
 </body>
