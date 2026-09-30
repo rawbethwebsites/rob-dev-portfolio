@@ -520,15 +520,15 @@ function buildDark(){
 
 
   // every element with data-code gets its source drawn in its own box
-  // Keep interactive controls clean: the source layer should frame the CTA, not typeset over it.
-  document.querySelectorAll('[data-code]:not(.btn)').forEach(el=>{
+  // CTAs keep their source label, but the label sits below the control so it never covers the action text.
+  document.querySelectorAll('[data-code]').forEach(el=>{
     const r=rel(el); const lines=el.dataset.code.split('|');
     const longest=Math.max(...lines.map(l=>l.length));
     let fs=Math.min(r.w/(longest*0.6), el.tagName==='H1'?30:17);
     fs=Math.max(fs, el.tagName==='H1'?13:9.5);
     const lh=fs*1.45;
     const blockH=lines.length*lh;
-    const y=r.y+Math.max(0,(r.h-blockH)/2);
+    const y=el.classList.contains('btn') ? r.y+r.h+6 : r.y+Math.max(0,(r.h-blockH)/2);
     drawCode(g,lines,r.x,y,fs,lh);
   });
 
