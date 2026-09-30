@@ -213,6 +213,9 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 .rail-track{display:flex;width:max-content;animation:rail 26s linear infinite;will-change:transform}
 .rail-track span{display:inline-flex;align-items:center;gap:18px;padding:18px 22px;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#B9B6E6;white-space:nowrap}
 .rail-track span::after{content:"✦";color:var(--amber);font-size:14px}
+.service-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:0 0 42px}
+.service-pill{border:1px solid rgba(216,214,245,.16);border-radius:999px;padding:12px 14px;color:#D8D6F5;font-size:13px;text-align:center;background:rgba(33,30,85,.42);transition:transform .35s,border-color .3s,color .3s}
+.service-pill:hover{transform:translateY(-3px);border-color:var(--amber);color:var(--amber)}
 @keyframes rail{to{transform:translateX(-50%)}}
 .timeline-card{transform:translateX(28px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.1,1),opacity .7s,border-color .3s}
 .in-view .timeline-card{transform:none;opacity:1}
@@ -231,7 +234,7 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 #contact .btn.ghost-dark{color:var(--src);border-color:rgba(21,19,61,.45)}
 #contact .btn.ghost-dark:hover{border-color:var(--src);color:var(--src);background:rgba(255,255,255,.18)}
 #contact .foot{border-color:rgba(21,19,61,.24);color:rgba(21,19,61,.65)}
-@media (max-width:820px){.grid{grid-template-columns:1fr}.card{grid-column:auto}.kpi:nth-child(2n){transform:none}.rail-track{animation-duration:22s}}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.card{grid-column:auto}.kpi:nth-child(2n){transform:none}.rail-track{animation-duration:22s}.service-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.rail-track{animation:none}.sec::before{display:none}.card,.timeline-card{transform:none!important;opacity:1!important}}
 </style>
 </head>
@@ -240,7 +243,7 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
   <nav id="nav">
     <a class="logo" href="#hero" data-code='import { Work, Stack, About } from "./robertjohn";'>robert.theboostnation.space</a>
     <div class="links" id="links">
-      <a href="#work">Work</a><a href="#worklist">Selected</a><a href="#stack">Stack</a><a href="#about">About</a>
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#worklist">Selected</a><a href="#stack">Stack</a><a href="#about">About</a>
       <a class="hello" href="#contact" data-code="<Contact />">Say hello</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -280,48 +283,52 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
     </div>
   </div>
 
+  <div class="service-strip" id="services" aria-label="Services Robert offers">
+    <span class="service-pill">Web-app development</span><span class="service-pill">Motion graphics</span><span class="service-pill">Graphic design</span><span class="service-pill">Video editing</span><span class="service-pill">Marketing content</span><span class="service-pill">Fitness training</span>
+  </div>
+
   <div class="kpi-row">
     <div class="kpi"><span class="kpi-value">4+</span><span class="kpi-label">Full-stack apps delivered</span></div>
     <div class="kpi"><span class="kpi-value">5+</span><span class="kpi-label">Years experience</span></div>
     <div class="kpi"><span class="kpi-value">10+</span><span class="kpi-label">Projects shipped</span></div>
-    <div class="kpi"><span class="kpi-value">99%</span><span class="kpi-label">On-time delivery</span></div>
+    <div class="kpi"><span class="kpi-value">6</span><span class="kpi-label">Ways I can help</span></div>
   </div>
 
   <div class="grid">
     <article class="card">
       <div class="thumb t1">01</div>
       <div class="card-body">
-        <h3>DigitalDock</h3>
-        <p>Digital services marketplace with admin curation, crypto checkout and Telegram notifications — built as a real product for The Boost Nation.</p>
-        <div class="tags"><span>React</span><span>Node</span><span>Payments</span><span>Telegram</span></div>
-        <a class="card-link" href="https://github.com/rawbethwebsites/digitaldock" target="_blank" rel="noopener">View the build</a>
+        <h3>AOK Global Mart</h3>
+        <p>Client proposal and commerce experience with a clear path from product discovery to enquiry.</p>
+        <div class="tags"><span>Web app</span><span>Commerce</span><span>UX</span><span>Vercel</span></div>
+        <a class="card-link" href="https://aokglobalmart.theboostnation.space" target="_blank" rel="noopener">View live project</a>
       </div>
     </article>
     <article class="card">
       <div class="thumb t2">02</div>
       <div class="card-body">
-        <h3>Mindspace</h3>
-        <p>Mental-wellness app designed to make reflection and support feel calm, private and useful — from interface through deployment.</p>
-        <div class="tags"><span>React</span><span>Vite</span><span>AI</span><span>Product design</span></div>
-        <a class="card-link" href="https://github.com/rawbethwebsites/mindspace" target="_blank" rel="noopener">View the build</a>
+        <h3>CDS International</h3>
+        <p>Corporate website and catalogue system for a legal metrology and sourcing business.</p>
+        <div class="tags"><span>Web app</span><span>Catalogue</span><span>Content</span><span>SEO</span></div>
+        <a class="card-link" href="https://cdsigrl.org" target="_blank" rel="noopener">View live project</a>
       </div>
     </article>
     <article class="card">
       <div class="thumb t3">03</div>
       <div class="card-body">
-        <h3>The Boost Nation</h3>
-        <p>The company site and operating system behind the work: websites, AI automation, brand systems and digital foundations for growing teams.</p>
-        <div class="tags"><span>Strategy</span><span>Web</span><span>Automation</span><span>AI systems</span></div>
-        <a class="card-link" href="https://theboostnation.space" target="_blank" rel="noopener">Visit TBN</a>
+        <h3>KS-One Collections</h3>
+        <p>Footwear catalog and buyer path that turns social attention into a clearer product and ordering experience.</p>
+        <div class="tags"><span>Brand site</span><span>Catalog</span><span>Graphics</span><span>WhatsApp</span></div>
+        <a class="card-link" href="https://ksone-website.vercel.app" target="_blank" rel="noopener">View project</a>
       </div>
     </article>
     <article class="card">
       <div class="thumb t4">04</div>
       <div class="card-body">
-        <h3>Open Higgsfield AI</h3>
-        <p>Open-source AI image generation and cinema studio work exploring what useful creative tooling can look like when the stack stays open.</p>
-        <div class="tags"><span>AI</span><span>Python</span><span>Open source</span><span>Creative tools</span></div>
-        <a class="card-link" href="https://github.com/rawbethwebsites/Open-Higgsfield-AI" target="_blank" rel="noopener">View the build</a>
+        <h3>BE THE LIGHT: Kingdom Quest</h3>
+        <p>Real-time multiplayer Bible game for church youth events, combining product design, motion and event energy.</p>
+        <div class="tags"><span>Web app</span><span>Game systems</span><span>Motion</span><span>Events</span></div>
+        <a class="card-link" href="https://light.theboostnation.com" target="_blank" rel="noopener">View live project</a>
       </div>
     </article>
   </div>
@@ -433,10 +440,10 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 <section class="sec" id="about">
   <div class="sec-head"><span class="mono">// about</span><h2>Robert, behind the builds</h2></div>
   <div class="about-grid">
-    <p class="lead">I’m Robert Edumoh, based in Abuja. The Boost Nation is mine: the studio, the experiments, the client work and the products all come from the same place — making technology useful for people building in Africa.</p>
+    <p class="lead">I’m Robert Edumoh, based in Abuja. The Boost Nation is mine: the studio, the experiments, the client work and the products all come from the same place — making technology, content and movement useful for people building in Africa.</p>
     <ul class="facts">
       <li><span class="mono">based</span><span>Abuja, Nigeria</span></li>
-      <li><span class="mono">focus</span><span>products · systems · AI</span></li>
+      <li><span class="mono">focus</span><span>web · motion · content · fitness</span></li>
       <li><span class="mono">builds through</span><span>The Boost Nation</span></li>
       <li><span class="mono">status</span><span>open to meaningful work</span></li>
     </ul>
@@ -754,7 +761,7 @@ menuBtn.addEventListener('click',()=>{
 });
 
 /* dark nav once scrolled + active-link highlight */
-const SECTIONS=['work','worklist','stack','about','contact'];
+const SECTIONS=['work','services','worklist','stack','about','contact'];
 function onScroll(){
   nav.classList.toggle('scrolled',scrollY>40);
   let cur='';
