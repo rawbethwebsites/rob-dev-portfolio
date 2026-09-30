@@ -220,6 +220,22 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 .build-link{display:flex;flex-direction:column;gap:7px;padding:17px 18px;border:1px solid rgba(216,214,245,.14);border-radius:14px;background:rgba(33,30,85,.48);color:#F2F1FF;text-decoration:none;transition:transform .35s,border-color .3s,background .3s}
 .build-link small{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;color:#8FD3FF;font-size:11px}
 .build-link:hover{transform:translateY(-4px);border-color:var(--amber);background:#292561}
+#worklist{background:#F3F0E8;color:var(--ink);background-image:linear-gradient(135deg,rgba(27,24,64,.04) 25%,transparent 25%,transparent 50%,rgba(27,24,64,.04) 50%,rgba(27,24,64,.04) 75%,transparent 75%);background-size:22px 22px}
+#worklist .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;max-width:none;margin-bottom:42px}
+#worklist .sec-head h2{color:var(--ink);font-size:clamp(42px,7vw,92px);letter-spacing:-.055em;max-width:9em}
+#worklist .sec-head .mono{color:var(--cocoa);margin-bottom:7px}
+#worklist .timeline{max-width:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#worklist .timeline-item{padding:0;display:block}
+#worklist .timeline-dot,#worklist .timeline-line{display:none}
+#worklist .timeline-card{min-height:230px;padding:24px;background:rgba(255,255,255,.72);border:1px solid rgba(27,24,64,.13);border-radius:22px;box-shadow:0 18px 50px -34px rgba(27,24,64,.5);display:flex;flex-direction:column;justify-content:space-between;transform:translateY(22px)}
+#worklist .timeline-card:hover{border-color:var(--cocoa);transform:translateY(-5px)}
+#worklist .timeline-header{margin-bottom:28px;align-items:flex-start}
+#worklist .timeline-year{color:var(--cocoa);font-size:12px}
+#worklist .timeline-role{color:var(--ink-soft);font-size:11px}
+#worklist .timeline-card h3{color:var(--ink);font-size:clamp(20px,2vw,28px);letter-spacing:-.025em;margin-bottom:8px}
+#worklist .timeline-desc{color:var(--ink-soft);font-size:15px;max-width:34em;margin-bottom:18px}
+#worklist .tags span{color:var(--cocoa);border-color:rgba(138,75,42,.28);background:rgba(138,75,42,.05)}
+@media (max-width:820px){#worklist .sec-head{display:block;margin-bottom:28px}#worklist .sec-head h2{font-size:clamp(42px,14vw,70px);max-width:7em}#worklist .timeline{grid-template-columns:1fr;gap:12px}#worklist .timeline-card{min-height:210px;padding:20px;border-radius:18px}}
 @keyframes rail{to{transform:translateX(-50%)}}
 .timeline-card{transform:translateX(28px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.1,1),opacity .7s,border-color .3s}
 .in-view .timeline-card{transform:none;opacity:1}
@@ -376,7 +392,7 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 </section>
 
 <section class="sec" id="worklist">
-  <div class="sec-head"><span class="mono">// worklist</span><h2>From the TBN lab</h2></div>
+  <div class="sec-head"><span class="mono">// selected builds</span><h2>Built with intent.</h2></div>
 
   <div class="timeline">
     <div class="timeline-item">
