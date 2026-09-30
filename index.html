@@ -89,7 +89,7 @@ h1 .line:nth-child(3)>span{animation-delay:.24s}
   transition:transform .35s cubic-bezier(.2,.8,.1,1),background .25s}
 .btn.primary{background:var(--ink);color:var(--ice)}
 .btn.primary:hover{background:var(--cocoa)}
-.btn.ghost{color:var(--ink);border:1.5px solid rgba(27,24,64,.25)}
+.btn.ghost{color:var(--ink);border:1.5px solid rgba(27,24,64,.25);background:rgba(230,235,245,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .btn:focus-visible,.links a:focus-visible,.logo:focus-visible{outline:3px solid var(--cocoa);outline-offset:3px}
 @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -511,7 +511,8 @@ function buildDark(){
 
 
   // every element with data-code gets its source drawn in its own box
-  document.querySelectorAll('[data-code]').forEach(el=>{
+  // Keep interactive controls clean: the source layer should frame the CTA, not typeset over it.
+  document.querySelectorAll('[data-code]:not(.btn)').forEach(el=>{
     const r=rel(el); const lines=el.dataset.code.split('|');
     const longest=Math.max(...lines.map(l=>l.length));
     let fs=Math.min(r.w/(longest*0.6), el.tagName==='H1'?30:17);
