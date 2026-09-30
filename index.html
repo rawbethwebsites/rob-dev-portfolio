@@ -216,6 +216,10 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 .service-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:0 0 42px}
 .service-pill{border:1px solid rgba(216,214,245,.16);border-radius:999px;padding:12px 14px;color:#D8D6F5;font-size:13px;text-align:center;background:rgba(33,30,85,.42);transition:transform .35s,border-color .3s,color .3s}
 .service-pill:hover{transform:translateY(-3px);border-color:var(--amber);color:var(--amber)}
+.build-archive{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.build-link{display:flex;flex-direction:column;gap:7px;padding:17px 18px;border:1px solid rgba(216,214,245,.14);border-radius:14px;background:rgba(33,30,85,.48);color:#F2F1FF;text-decoration:none;transition:transform .35s,border-color .3s,background .3s}
+.build-link small{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;color:#8FD3FF;font-size:11px}
+.build-link:hover{transform:translateY(-4px);border-color:var(--amber);background:#292561}
 @keyframes rail{to{transform:translateX(-50%)}}
 .timeline-card{transform:translateX(28px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.1,1),opacity .7s,border-color .3s}
 .in-view .timeline-card{transform:none;opacity:1}
@@ -234,7 +238,7 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
 #contact .btn.ghost-dark{color:var(--src);border-color:rgba(21,19,61,.45)}
 #contact .btn.ghost-dark:hover{border-color:var(--src);color:var(--src);background:rgba(255,255,255,.18)}
 #contact .foot{border-color:rgba(21,19,61,.24);color:rgba(21,19,61,.65)}
-@media (max-width:820px){.grid{grid-template-columns:1fr}.card{grid-column:auto}.kpi:nth-child(2n){transform:none}.rail-track{animation-duration:22s}.service-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.card{grid-column:auto}.kpi:nth-child(2n){transform:none}.rail-track{animation-duration:22s}.service-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.build-archive{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.rail-track{animation:none}.sec::before{display:none}.card,.timeline-card{transform:none!important;opacity:1!important}}
 </style>
 </head>
@@ -243,7 +247,7 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
   <nav id="nav">
     <a class="logo" href="#hero" data-code='import { Work, Stack, About } from "./robertjohn";'>robert.theboostnation.space</a>
     <div class="links" id="links">
-      <a href="#work">Work</a><a href="#services">Services</a><a href="#worklist">Selected</a><a href="#stack">Stack</a><a href="#about">About</a>
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#worklist">Selected</a><a href="#archive">More</a><a href="#about">About</a>
       <a class="hello" href="#contact" data-code="<Contact />">Say hello</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -331,6 +335,25 @@ canvas#reveal{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer
         <a class="card-link" href="https://light.theboostnation.com" target="_blank" rel="noopener">View live project</a>
       </div>
     </article>
+  </div>
+</section>
+
+<section class="sec" id="archive">
+  <div class="sec-head"><span class="mono">// more builds</span><h2>There’s more in the lab</h2></div>
+  <p class="lead">A few more live builds, client systems and experiments from the same Vercel workspace.</p>
+  <div class="build-archive">
+    <a class="build-link" href="https://fitfarm.vercel.app" target="_blank" rel="noopener"><span>FitFarm</span><small>fitness product · live</small></a>
+    <a class="build-link" href="https://www.magenersynergy.org" target="_blank" rel="noopener"><span>Magener Synergy</span><small>travel and tours · live</small></a>
+    <a class="build-link" href="https://fono-nine.vercel.app" target="_blank" rel="noopener"><span>FONO</span><small>portfolio / product work · live</small></a>
+    <a class="build-link" href="https://estatepilot-gamma.vercel.app" target="_blank" rel="noopener"><span>EstatePilot</span><small>property platform · live</small></a>
+    <a class="build-link" href="https://tbn-ict-training-immersive.vercel.app" target="_blank" rel="noopener"><span>TBN ICT Training</span><small>immersive learning · live</small></a>
+    <a class="build-link" href="https://ops.theboostnation.com" target="_blank" rel="noopener"><span>TBN Ops Center</span><small>internal systems · live</small></a>
+    <a class="build-link" href="https://worktick-v2.vercel.app" target="_blank" rel="noopener"><span>WorkTick</span><small>workflow product · live</small></a>
+    <a class="build-link" href="https://mindspace-peach.vercel.app" target="_blank" rel="noopener"><span>Mindspace</span><small>mental wellness · live</small></a>
+    <a class="build-link" href="https://macworld.space" target="_blank" rel="noopener"><span>Macworld Inventory</span><small>inventory system · live</small></a>
+    <a class="build-link" href="https://trade.theboostnation.com" target="_blank" rel="noopener"><span>Trading workspace</span><small>product experiment · live</small></a>
+    <a class="build-link" href="https://digitaldock.vercel.app" target="_blank" rel="noopener"><span>DigitalDock</span><small>digital marketplace · live</small></a>
+    <a class="build-link" href="https://github.com/rawbethwebsites/touchbar-companion" target="_blank" rel="noopener"><span>Touch Bar Companion</span><small>macOS app · GitHub</small></a>
   </div>
 </section>
 
@@ -761,7 +784,7 @@ menuBtn.addEventListener('click',()=>{
 });
 
 /* dark nav once scrolled + active-link highlight */
-const SECTIONS=['work','services','worklist','stack','about','contact'];
+const SECTIONS=['work','services','worklist','archive','about','contact'];
 function onScroll(){
   nav.classList.toggle('scrolled',scrollY>40);
   let cur='';
